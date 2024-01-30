@@ -1,13 +1,18 @@
 # Based on # https://github.com/blaz-r/pi_pico_neopixel/blob/main/neopixel.py
-
 import neopixel	
 import machine
 import time
 
 ```
 This is currently designed to work with WS2812B leds as far as i can tell
-to get this working with other strips is to just change the colour order ("GRB") in init
+to get this working with other strips you just need to change the colour order ("GRB") in init
 
+# Usage
+import machine
+numLeds = 300
+ledPin = machine.Pin(0)
+controller = Controller(numLeds,ledPin)
+controller.fill(Colour.RED)
 ```
 
 class Colour:
@@ -28,7 +33,7 @@ class Controller:
         self.brightness= brightness
         
         ## WS2812B has GRB Colour order change this according to yours
-        self.strip = neopixel.Neopixel(num_leds=self.numLeds,pin=ledPin,mode="GRB")
+        self.strip = neopixel.Neopixel(num_leds=self.numLeds,pin=ledPin,mode="GRB", state_machine=0) ## Not exactly sure what state machine is for
         self.strip.brightness(brightness)
         
     def colourChase(self,color:Colour):
