@@ -1,6 +1,6 @@
 # PicoScripts
 
-# Wifi
+## Wifi
 
 just a simple python script that connects to the wifi based on an SSID and password
 ```
